@@ -118,32 +118,51 @@ public class Main {
         // Порядок сохранить, в массиве достаточно места, чтобы все вместилось.
         // Вернуть конечную длину массива и сам массив изменить, не делать новый.
 
-        char[] chars = {'h', 'k', ' ', 'r', ' ', 'l'};
+       char[] chars = {'h', 'k', ' ', 'r', ' ', 'l','h', ' ','h', 'k'};
 
         System.out.println("Исходный массив:" + Arrays.toString(chars) + "и его длинна равнв = " + chars.length);
 
-        int spaceCount = 0;
+        int newLength = chars.length ;
+        int newIndex = newLength-1;
 
-        for (char i : chars) {
-            if (i == ' ') {
-                spaceCount++;
-            }
-        }
-
-        int newLength = chars.length + 2 * spaceCount;
-        int newIndex = newLength - 1;
-
-        for (int i = chars.length - 1; i >= 0; i--) {
+        for (int i = 0; i <= chars.length - 1; i++) {
             if (chars[i] == ' ') {
-                chars[newIndex--] = ' ';
-                chars[newIndex--] = ' ';
-                chars[newIndex--] = ' ';
-            } else {
-                chars[newIndex--] = chars[i];
+                chars[i] = '%';
+                chars[++i] = '2';
+                chars[++i] = 'p';
             }
+            //else {
+              //  chars[i] = chars[i];
+            //}
         }
 
 
         System.out.println("Массив после замены:" + Arrays.toString(chars) + "и его длинна равнв = " + chars.length);
+
+
+
+
+
+    // морской бой
+    Battleship battleship = new Battleship();
+
+
+
+        System.out.println("Single Ships:");
+    int[][] singleShips = battleship.generateSingleShips();
+        battleship.printBoard(singleShips);
+
+        System.out.println("Double Ships:");
+    int[][] doubleShips = battleship.generateDoubleShips();
+        battleship.printBoard(doubleShips);
+
+        System.out.println("Triple Ships:");
+    int[][] tripleShips = battleship.generateTripleShips();
+        battleship.printBoard(tripleShips);
+
+        System.out.println("All Ships:");
+    int[][] allShips = battleship.generateAllShips();
+        battleship.printBoard(allShips);
+
     }
 }
