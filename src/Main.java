@@ -118,12 +118,12 @@ public class Main {
         // Порядок сохранить, в массиве достаточно места, чтобы все вместилось.
         // Вернуть конечную длину массива и сам массив изменить, не делать новый.
 
-       char[] chars = {'h', 'k', ' ', 'r', ' ', 'l','h', ' ','h', 'k'};
+        char[] chars = {'h', 'k', ' ', 'r', ' ', 'l', 'h', ' ', 'h', 'k'};
 
         System.out.println("Исходный массив:" + Arrays.toString(chars) + "и его длинна равнв = " + chars.length);
 
-        int newLength = chars.length ;
-        int newIndex = newLength-1;
+        int newLength = chars.length;
+        int newIndex = newLength - 1;
 
         for (int i = 0; i <= chars.length - 1; i++) {
             if (chars[i] == ' ') {
@@ -132,7 +132,7 @@ public class Main {
                 chars[++i] = 'p';
             }
             //else {
-              //  chars[i] = chars[i];
+            //  chars[i] = chars[i];
             //}
         }
 
@@ -140,28 +140,24 @@ public class Main {
         System.out.println("Массив после замены:" + Arrays.toString(chars) + "и его длинна равнв = " + chars.length);
 
 
-
-
-
-    // морской бой
-    Battleship battleship = new Battleship();
-
+        // морской бой
+        Battleship battleship = new Battleship();
 
 
         System.out.println("Single Ships:");
-    int[][] singleShips = battleship.generateSingleShips();
+        int[][] singleShips = battleship.generateSingleShips();
         battleship.printBoard(singleShips);
 
         System.out.println("Double Ships:");
-    int[][] doubleShips = battleship.generateDoubleShips();
+        int[][] doubleShips = battleship.generateDoubleShips();
         battleship.printBoard(doubleShips);
 
         System.out.println("Triple Ships:");
-    int[][] tripleShips = battleship.generateTripleShips();
+        int[][] tripleShips = battleship.generateTripleShips();
         battleship.printBoard(tripleShips);
 
         System.out.println("All Ships:");
-    int[][] allShips = battleship.generateAllShips();
+        int[][] allShips = battleship.generateAllShips();
         battleship.printBoard(allShips);
 //острова
         Islands is = new Islands();
@@ -173,10 +169,88 @@ public class Main {
         };
 
         System.out.println();
-        array.сonsoleOutput( grid.length,grid[0].length, grid);
+        array.сonsoleOutput(grid.length, grid[0].length, grid);
         int islandCount = is.countIslands(grid);
         System.out.println("Количество островов: " + islandCount);
 
+        System.out.println("Домашнее задание");
+
+        //Задача 1:
+        //1.1 Создать двумерный массив, заполнить его случайными числами.
+        //1.2 Добавить к каждому значению число, которое пользователь будет вводить с консоли.
+        //1.3 Найти сумму всех получившихся элементов и вывести в консоль
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                twooMas[i][j] = random.nextInt(100);
+                if (MaxElem <= twooMas[i][j]) {
+                    MaxElem = twooMas[i][j];
+                }
+            }
+        }
+
+        System.out.println("Введите число которое прибавиться к каждому значению массива");
+        count = 0;
+        int number = line.nextInt();
+        System.out.println("Исходный массив");
+        array.сonsoleOutput(twooMas.length, twooMas[0].length, twooMas);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                twooMas[i][j] += number;
+                count += twooMas[i][j];
+            }
+        }
+        System.out.println("Преобразованный массив");
+        array.сonsoleOutput(twooMas.length, twooMas[0].length, twooMas);
+        System.out.println("Сумма элементов преобразованного массива = " + count);
+
+        //Задача 2:
+        //Создать программу для раскраски шахматной доски с помощью цикла. Создать
+        //двумерный массив String 8х8. С помощью циклов задать элементам массива значения
+        //B(Black) или W(White). При выводе результат работы программы должен быть
+
+        System.out.println("Шахматная доска");
+        String[][] chess = new String[8][8];
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (i % 2 == 0 && j % 2 == 0) {
+                    chess[i][j] = "W";
+                    } else if (i % 2 == 0 && j % 2 != 0) {
+                    chess[i][j] = "B";
+                } else if(i % 2 != 0 && j % 2 != 0){
+                    chess[i][j] = "W";
+                } else if (i % 2 != 0 && j % 2 == 0) {
+                    chess[i][j] = "B";
+                }
+            }
+        }
+            array.сonsoleOutput(8, 8, chess);
+
+        // Вывод массива змейкой
+        System.out.println("Введите размерность массива");
+         n = line.nextInt();
+         m = line.nextInt();
+
+        int[][] A = new int[n][m];
+
+        int num = 1;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                for (int j = 0; j < m; j++) {
+                    A[i][j] = num;
+                    num++;
+                }
+            } else {
+                for (int j = m - 1; j >= 0; j--) {
+                    A[i][j] = num;
+                    num++;
+                }
+            }
+        }
+        System.out.println("Массив змейка");
+        array.сonsoleOutput(n, m, A);
 
     }
 }
