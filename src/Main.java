@@ -163,6 +163,20 @@ public class Main {
         System.out.println("All Ships:");
     int[][] allShips = battleship.generateAllShips();
         battleship.printBoard(allShips);
+//острова
+        Islands is = new Islands();
+        int[][] grid = {
+                {1, 1, 0, 0, 0},
+                {1, 1, 0, 0, 0},
+                {0, 0, 1, 0, 1},
+                {0, 0, 0, 1, 1}
+        };
+
+        System.out.println();
+        array.сonsoleOutput( grid.length,grid[0].length, grid);
+        int islandCount = is.countIslands(grid);
+        System.out.println("Количество островов: " + islandCount);
+
 
     }
 }
